@@ -1,3 +1,10 @@
+<?php
+header("X-Content-Type-Options: nosniff");
+header("Referrer-Policy: strict-origin-when-cross-origin");
+header("X-Frame-Options: DENY");
+header("Permissions-Policy: camera=(), microphone=(), geolocation=()");
+header("Content-Security-Policy: default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'sha256-NBfyYgxoWTkJ9SyHWLNVIq8UkKGvsaGPAaGmNMpVMSA='; img-src 'self' data:; media-src 'self'; connect-src 'self' https://unpkg.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP3 Player</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5" crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,10 +21,10 @@
     <div class="tabs">
         <?php
         $instruments = ['kitara', 'kiipparit', 'laulu', 'basso', 'rummut'];
-        foreach ($instruments as $inst) {
-            echo "<button class='tab-button' data-tab='$inst'>" . ucfirst(htmlspecialchars($inst, ENT_QUOTES, 'UTF-8')) . "</button>";
-        }
-        ?>
+foreach ($instruments as $inst) {
+    echo "<button class='tab-button' data-tab='$inst'>" . ucfirst(htmlspecialchars($inst, ENT_QUOTES, 'UTF-8')) . "</button>";
+}
+?>
     </div>
     <?php
     foreach ($instruments as $inst) {
@@ -38,9 +45,9 @@
         }
         echo "</div>";
     }
-        ?>
+?>
     <div class="player" id="player">
-        <audio id="audio" controls style="display:none;"></audio>
+        <audio id="audio" controls></audio>
         <div class="player-progress">
             <input type="range" id="progress" value="0" min="0" step="0.1" aria-label="Progress">
             <div class="player-time">

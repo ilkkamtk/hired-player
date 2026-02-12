@@ -16,6 +16,10 @@ h1 {
   color: hsl(345, 8%, 96%);
 }
 
+#audio {
+  display: none;
+}
+
 .tabs {
   display: flex;
   flex-wrap: wrap;
